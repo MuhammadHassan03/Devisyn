@@ -1,85 +1,23 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
-interface ISetting extends Document {
-  siteName: string;
-  logo: string;
-  description: string;
-  email: string;
-  phone: string;
-  address: string;
-  socialMedia: {
-    twitter: string;
-    linkedin: string;
-    github: string;
-  };
-  colors: {
-    primary: string;
-    secondary: string;
-    background: string;
-  };
-}
-
-const settingSchema = new Schema<ISetting>({
-  siteName: {
+const settingSchema = new mongoose.Schema({
+  key: {
     type: String,
     required: true,
-    trim: true,
+    unique: true,
   },
-  logo: {
-    type: String,
+  value: {
+    type: mongoose.Schema.Types.Mixed,
     required: true,
   },
-  description: {
-    type: String,
-    required: true,
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
-  email: {
-    type: String,
-    required: true,
-    trim: true,
+  updatedAt: {
+    type: Date,
+    default: Date.now,
   },
-  phone: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  address: {
-    type: String,
-    required: true,
-  },
-  socialMedia: {
-    twitter: {
-      type: String,
-      required: true,
-    },
-    linkedin: {
-      type: String,
-      required: true,
-    },
-    github: {
-      type: String,
-      required: true,
-    },
-  },
-  colors: {
-    primary: {
-      type: String,
-      required: true,
-      default: '#00FF9D',
-    },
-    secondary: {
-      type: String,
-      required: true,
-      default: '#6B46FF',
-    },
-    background: {
-      type: String,
-      required: true,
-      default: '#0A0A0A',
-    },
-  },
-}, {
-  timestamps: true,
 });
 
-export const Setting = mongoose.models.Setting || mongoose.model<ISetting>('Setting', settingSchema); 
+export default mongoose.models.Setting || mongoose.model('Setting', settingSchema); 

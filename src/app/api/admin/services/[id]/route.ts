@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { connectToDatabase } from '@/lib/mongodb';
-import { Service } from '@/models/Service';
+import connectDB from '@/lib/mongodb';
+import Service from '@/models/Service';
 
 export async function GET(
   request: Request,
@@ -14,7 +14,7 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await connectToDatabase();
+    await connectDB();
     const service = await Service.findById(params.id);
 
     if (!service) {
@@ -39,7 +39,7 @@ export async function PUT(
     }
 
     const body = await request.json();
-    await connectToDatabase();
+    await connectDB();
 
     const service = await Service.findByIdAndUpdate(params.id, body, { new: true });
 
@@ -64,7 +64,7 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await connectToDatabase();
+    await connectDB();
     const service = await Service.findByIdAndDelete(params.id);
 
     if (!service) {

@@ -1,54 +1,41 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
-interface IProject extends Document {
-  title: string;
-  description: string;
-  category: string;
-  image: string;
-  technologies: string[];
-  features: string[];
-  link: string;
-  order: number;
-}
-
-const projectSchema = new Schema<IProject>({
+const projectSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-    trim: true,
   },
   description: {
+    type: String,
+    required: true,
+  },
+  image: {
     type: String,
     required: true,
   },
   category: {
     type: String,
     required: true,
-    trim: true,
-  },
-  image: {
-    type: String,
-    required: true,
   },
   technologies: [{
     type: String,
-    required: true,
-  }],
-  features: [{
-    type: String,
-    required: true,
   }],
   link: {
     type: String,
     required: true,
   },
-  order: {
-    type: Number,
-    required: true,
-    default: 0,
+  featured: {
+    type: Boolean,
+    default: false,
   },
-}, {
-  timestamps: true,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-export const Project = mongoose.models.Project || mongoose.model<IProject>('Project', projectSchema); 
+export default mongoose.models.Project || mongoose.model('Project', projectSchema); 

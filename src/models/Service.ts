@@ -1,19 +1,9 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
-interface IService extends Document {
-  title: string;
-  description: string;
-  icon: string;
-  features: string[];
-  technologies: string[];
-  order: number;
-}
-
-const serviceSchema = new Schema<IService>({
+const serviceSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-    trim: true,
   },
   description: {
     type: String,
@@ -27,17 +17,18 @@ const serviceSchema = new Schema<IService>({
     type: String,
     required: true,
   }],
-  technologies: [{
-    type: String,
-    required: true,
-  }],
   order: {
     type: Number,
-    required: true,
     default: 0,
   },
-}, {
-  timestamps: true,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-export const Service = mongoose.models.Service || mongoose.model<IService>('Service', serviceSchema); 
+export default mongoose.models.Service || mongoose.model('Service', serviceSchema); 
