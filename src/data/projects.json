@@ -1,0 +1,107 @@
+{
+  "projects": [
+    {
+      "id": "ecommerce",
+      "title": "E-Commerce Platform",
+      "description": "A modern e-commerce solution with advanced features and real-time inventory management",
+      "category": "web",
+      "image": "/project1.jpg",
+      "tech": ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB"],
+      "features": [
+        "Real-time inventory tracking",
+        "Advanced search and filtering",
+        "Secure payment integration",
+        "Admin dashboard",
+        "Analytics and reporting"
+      ],
+      "link": "#"
+    },
+    {
+      "id": "banking",
+      "title": "Mobile Banking App",
+      "description": "Secure and intuitive mobile banking application with biometric authentication",
+      "category": "mobile",
+      "image": "/project2.jpg",
+      "tech": ["React Native", "Node.js", "MongoDB", "Firebase", "Stripe"],
+      "features": [
+        "Biometric authentication",
+        "Real-time transactions",
+        "Bill payments",
+        "Investment tracking",
+        "Secure messaging"
+      ],
+      "link": "#"
+    },
+    {
+      "id": "analytics",
+      "title": "AI Analytics Dashboard",
+      "description": "Real-time analytics platform with AI-powered insights and predictions",
+      "category": "ai",
+      "image": "/project3.jpg",
+      "tech": ["Python", "TensorFlow", "React", "D3.js", "AWS"],
+      "features": [
+        "Predictive analytics",
+        "Custom reporting",
+        "Data visualization",
+        "Automated insights",
+        "API integration"
+      ],
+      "link": "#"
+    },
+    {
+      "id": "cloud-migration",
+      "title": "Cloud Migration Platform",
+      "description": "Enterprise-grade cloud migration and management solution",
+      "category": "cloud",
+      "image": "/project4.jpg",
+      "tech": ["AWS", "Azure", "Kubernetes", "Terraform", "Docker"],
+      "features": [
+        "Multi-cloud support",
+        "Automated migration",
+        "Cost optimization",
+        "Security compliance",
+        "Performance monitoring"
+      ],
+      "link": "#"
+    },
+    {
+      "id": "social-dashboard",
+      "title": "Social Media Dashboard",
+      "description": "Comprehensive social media management and analytics platform",
+      "category": "web",
+      "image": "/project5.jpg",
+      "tech": ["React", "Node.js", "GraphQL", "Redis", "Elasticsearch"],
+      "features": [
+        "Multi-platform integration",
+        "Content scheduling",
+        "Engagement analytics",
+        "Team collaboration",
+        "Custom reporting"
+      ],
+      "link": "#"
+    },
+    {
+      "id": "healthcare",
+      "title": "Healthcare Mobile App",
+      "description": "Patient care and appointment management mobile application",
+      "category": "mobile",
+      "image": "/project6.jpg",
+      "tech": ["Flutter", "Firebase", "Node.js", "MongoDB", "WebRTC"],
+      "features": [
+        "Video consultations",
+        "Appointment booking",
+        "Health records",
+        "Prescription management",
+        "Emergency contacts"
+      ],
+      "link": "#"
+    }
+  ],
+  "categories": [
+    { "id": "all", "name": "All Projects" },
+    { "id": "web", "name": "Web Applications" },
+    { "id": "mobile", "name": "Mobile Apps" },
+    { "id": "ai", "name": "AI Solutions" },
+    { "id": "cloud", "name": "Cloud Solutions" }
+  ]
+} 

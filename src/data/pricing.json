@@ -1,0 +1,95 @@
+{
+  "pricing": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "price": "5,000",
+      "description": "Perfect for small businesses and startups",
+      "features": [
+        "Basic Web Application",
+        "Mobile Responsive Design",
+        "5 Pages",
+        "Contact Form",
+        "Basic SEO",
+        "Email Support",
+        "1 Month Free Maintenance"
+      ],
+      "notIncluded": [
+        "Custom Features",
+        "Advanced Analytics",
+        "API Integration",
+        "24/7 Support",
+        "Priority Updates"
+      ],
+      "cta": "Get Started",
+      "popular": false
+    },
+    {
+      "id": "professional",
+      "name": "Professional",
+      "price": "15,000",
+      "description": "Ideal for growing businesses",
+      "features": [
+        "Custom Web Application",
+        "Mobile App Development",
+        "Unlimited Pages",
+        "Advanced Forms",
+        "Advanced SEO",
+        "API Integration",
+        "Priority Support",
+        "3 Months Free Maintenance",
+        "Analytics Dashboard",
+        "User Authentication"
+      ],
+      "notIncluded": [
+        "Enterprise Features",
+        "24/7 Support",
+        "Custom AI Solutions",
+        "Advanced Security"
+      ],
+      "cta": "Get Started",
+      "popular": true
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "price": "Custom",
+      "description": "For large organizations with complex needs",
+      "features": [
+        "Custom Enterprise Solution",
+        "Multiple Mobile Apps",
+        "Advanced Security",
+        "AI Integration",
+        "24/7 Support",
+        "Dedicated Team",
+        "Custom Features",
+        "Advanced Analytics",
+        "API Development",
+        "Cloud Infrastructure",
+        "Compliance & Security",
+        "Training & Documentation"
+      ],
+      "notIncluded": [],
+      "cta": "Contact Us",
+      "popular": false
+    }
+  ],
+  "faq": [
+    {
+      "question": "What's included in the maintenance period?",
+      "answer": "Our maintenance period includes bug fixes, security updates, and minor feature improvements. Major feature additions may require additional development time and cost."
+    },
+    {
+      "question": "Can I upgrade my plan later?",
+      "answer": "Yes, you can upgrade your plan at any time. We'll prorate the cost based on your remaining contract period."
+    },
+    {
+      "question": "Do you offer custom solutions?",
+      "answer": "Yes, we offer fully customized solutions tailored to your specific business needs. Contact us to discuss your requirements."
+    },
+    {
+      "question": "What's your development process?",
+      "answer": "We follow an agile development process with regular updates and client feedback. Each project includes planning, design, development, testing, and deployment phases."
+    }
+  ]
+} 
