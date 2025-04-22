@@ -170,27 +170,27 @@ const infographics = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 z-0" />
-        <div className="container mx-auto px-4 z-10 text-center">
-          <motion.h1
+      <section className="relative overflow-hidden py-20">
+        <div className="absolute inset-0 bg-[#0A0A0A]">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#00FF9D]/10 to-[#6B46FF]/10 animate-pulse"></div>
+          <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(to right, rgba(0,255,157,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,157,0.05) 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
+        </div>
+        <div className="container-custom relative z-10">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-5xl font-bold mb-6"
+            transition={{ duration: 0.8 }}
+            className="text-center"
           >
-            About Devisyn
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl max-w-2xl mx-auto"
-          >
-            We are a team of passionate developers, designers, and innovators dedicated to creating exceptional digital experiences.
-          </motion.p>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text">
+              About Devisyn
+            </h1>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              We are a team of passionate developers, designers, and innovators dedicated to creating exceptional digital experiences
+            </p>
+          </motion.div>
         </div>
       </section>
 

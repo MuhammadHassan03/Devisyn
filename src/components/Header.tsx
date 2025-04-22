@@ -26,6 +26,7 @@ export default function Header() {
     { name: 'Services', href: '/services' },
     { name: 'Work', href: '/work' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Blog', href: '/blog' },
   ];
 
   return (
@@ -67,12 +68,6 @@ export default function Header() {
                 )}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              className="px-4 py-2 rounded-full bg-gradient-to-r from-green-400 to-purple-500 text-white text-sm font-medium hover:opacity-90 transition-opacity"
-            >
-              Get Started
-            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -131,13 +126,6 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-green-400 to-purple-500 hover:opacity-90 transition-opacity"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Get Started
-              </Link>
             </div>
           </motion.div>
         )}

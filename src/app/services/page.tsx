@@ -67,33 +67,51 @@ export default function ServicesPage() {
   const processSteps = [
     {
       title: "Discovery",
-      description: "Understanding your requirements and business goals",
-      icon: "🔍"
+      description: "We dive deep into understanding your vision, goals, and challenges to create a solid foundation",
+      icon: "🔍",
+      color: "from-blue-500 to-blue-600",
+      gradient: "bg-gradient-to-br from-blue-500/20 to-blue-600/20",
+      features: ["Requirement Analysis", "Market Research", "User Personas", "Competitor Analysis"]
     },
     {
       title: "Planning",
-      description: "Creating a detailed roadmap and architecture",
-      icon: "📋"
+      description: "Crafting a detailed roadmap with milestones and deliverables for your project",
+      icon: "📋",
+      color: "from-purple-500 to-purple-600",
+      gradient: "bg-gradient-to-br from-purple-500/20 to-purple-600/20",
+      features: ["Project Timeline", "Resource Allocation", "Risk Assessment", "Budget Planning"]
     },
     {
       title: "Development",
-      description: "Building your solution with best practices",
-      icon: "⚙️"
+      description: "Building your solution with cutting-edge technologies and best practices",
+      icon: "⚙️",
+      color: "from-green-500 to-green-600",
+      gradient: "bg-gradient-to-br from-green-500/20 to-green-600/20",
+      features: ["Agile Development", "Code Review", "Version Control", "Continuous Integration"]
     },
     {
       title: "Testing",
-      description: "Rigorous testing and quality assurance",
-      icon: "✅"
+      description: "Ensuring quality through comprehensive testing and quality assurance",
+      icon: "✅",
+      color: "from-yellow-500 to-yellow-600",
+      gradient: "bg-gradient-to-br from-yellow-500/20 to-yellow-600/20",
+      features: ["Unit Testing", "Integration Testing", "Performance Testing", "Security Testing"]
     },
     {
       title: "Deployment",
-      description: "Smooth deployment and launch",
-      icon: "🚀"
+      description: "Smooth deployment and launch with zero downtime",
+      icon: "🚀",
+      color: "from-red-500 to-red-600",
+      gradient: "bg-gradient-to-br from-red-500/20 to-red-600/20",
+      features: ["CI/CD Pipeline", "Environment Setup", "Monitoring", "Backup Strategy"]
     },
     {
       title: "Support",
-      description: "Ongoing maintenance and support",
-      icon: "🛠️"
+      description: "Ongoing maintenance, updates, and support to keep your solution running smoothly",
+      icon: "🛠️",
+      color: "from-indigo-500 to-indigo-600",
+      gradient: "bg-gradient-to-br from-indigo-500/20 to-indigo-600/20",
+      features: ["Bug Fixes", "Performance Optimization", "Feature Updates", "24/7 Support"]
     }
   ];
 
@@ -165,9 +183,14 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Our Process Section */}
+      {/* Process Section */}
       <section className="py-20">
-        <div className="container-custom">
+        <div className="absolute inset-0 bg-[#0A0A0A]">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#00FF9D]/10 to-[#6B46FF]/10 animate-pulse"></div>
+          <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(to right, rgba(0,255,157,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,157,0.05) 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
+        </div>
+        
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -175,80 +198,49 @@ export default function ServicesPage() {
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
               Our Process
             </h2>
             <p className="text-xl text-gray-400">
-              We follow a systematic approach to deliver exceptional results
+              A seamless journey from concept to completion
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: 'Web Development',
-                description: 'Custom websites and web applications built with cutting-edge technologies.',
-                image: '/images/process/web-development.png',
-                icon: (
-                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
-                ),
-              },
-              {
-                title: 'Mobile Development',
-                description: 'Native and cross-platform mobile applications for iOS and Android.',
-                image: '/images/process/mobile-development.png',
-                icon: (
-                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                ),
-              },
-              {
-                title: 'AI Solutions',
-                description: 'Intelligent systems and machine learning solutions for your business.',
-                image: '/images/process/ai-solutions.png',
-                icon: (
-                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                  </svg>
-                ),
-              },
-              {
-                title: 'Cloud Services',
-                description: 'Scalable cloud infrastructure and deployment solutions.',
-                image: '/images/process/cloud-services.png',
-                icon: (
-                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                  </svg>
-                ),
-              },
-            ].map((item, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {processSteps.map((step, index) => (
               <motion.div
-                key={item.title}
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative group"
               >
-                <div className="relative aspect-square rounded-lg overflow-hidden mb-4">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-purple-500 text-white mb-4">
-                    {item.icon}
+                <div className="relative p-8 rounded-2xl overflow-hidden bg-[#1A1A1A] border border-white/10">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00FF9D]/5 to-[#6B46FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  <div className="relative z-10">
+                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${step.color} text-white mb-6 transform group-hover:scale-110 transition-transform duration-300`}>
+                      <span className="text-2xl">{step.icon}</span>
+                    </div>
+                    
+                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-[#00FF9D] transition-colors">
+                      {step.title}
+                    </h3>
+                    
+                    <p className="text-gray-400 mb-6">
+                      {step.description}
+                    </p>
+                    
+                    <div className="space-y-2">
+                      {step.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-center text-gray-300">
+                          <span className="w-1.5 h-1.5 bg-[#00FF9D] rounded-full mr-2" />
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-400">{item.description}</p>
                 </div>
               </motion.div>
             ))}

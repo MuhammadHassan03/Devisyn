@@ -4,6 +4,9 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/context/ThemeContext'
+import { Providers } from './providers'
+import { Toaster } from 'react-hot-toast'
+import AdminRouteCheck from '@/components/AdminRouteCheck'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -46,19 +49,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: 'your-google-site-verification',
-  },
-  alternates: {
-    canonical: 'https://devisyn.com',
   },
 }
 
@@ -68,24 +58,37 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
-        <title>Devisyn - Software Development Agency</title>
-        <meta name="description" content="Devisyn is a leading software development agency specializing in custom software solutions, web applications, and mobile development." />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+          rel="icon"
+          href="/icon?<generated>"
+          type="image/<generated>"
+          sizes="<generated>"
+        />
+        <link
+          rel="apple-touch-icon"
+          href="/apple-icon?<generated>"
+          type="image/<generated>"
+          sizes="<generated>"
+        />
       </head>
-      <body className={`${inter.className} antialiased bg-[#0A0A0A] text-white`}>
-        <ThemeProvider>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
+      <body className={inter.className}>
+        <Providers>
+          <ThemeProvider>
+            <AdminRouteCheck>
+              <Header />
+            </AdminRouteCheck>
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <AdminRouteCheck>
+              <Footer />
+            </AdminRouteCheck>
+            <Toaster position="top-right" />
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )
