@@ -4,11 +4,9 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Link from 'next/link';
 import pricingData from '@/data/pricing.json';
-import { useTheme } from '@/context/ThemeContext';
 
 export default function PricingPage() {
   const [activeTab, setActiveTab] = useState('monthly');
-  const { theme } = useTheme();
 
   return (
     <main className="pt-20">
