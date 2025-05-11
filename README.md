@@ -143,6 +143,32 @@ interface Blog {
 }
 ```
 
+## EmailJS Configuration
+
+To set up the contact form functionality, you'll need to configure EmailJS:
+
+1. Sign up for a free account at [EmailJS](https://www.emailjs.com/)
+2. Create a new email service (Gmail, Outlook, etc.)
+3. Create an email template with the following variables:
+   - `from_name`: Sender's name
+   - `from_email`: Sender's email
+   - `message`: Message content
+   - `subject`: Email subject
+
+4. Create a `.env.local` file in the root directory and add your EmailJS credentials:
+```env
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+5. Install the EmailJS package:
+```bash
+npm install @emailjs/browser
+```
+
+The contact form will now send emails using your configured EmailJS service.
+
 ## Support
 For support, please contact the theme author through Envato.
 

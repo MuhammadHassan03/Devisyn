@@ -118,32 +118,34 @@ export default function ServicesPage() {
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20">
-        <div className="absolute inset-0 bg-[#0A0A0A]">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#00FF9D]/10 to-[#6B46FF]/10 animate-pulse"></div>
-          <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(to right, rgba(0,255,157,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,157,0.05) 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
-        </div>
-        <div className="container-custom relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text">
-              Our Services
-            </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Comprehensive software solutions tailored to your business needs
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <div className="relative">
+        <section className="relative overflow-hidden py-32">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#00FF9D]/10 to-[#6B46FF]/10 animate-pulse"></div>
+            <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(to right, rgba(0,255,157,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,157,0.05) 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
+          </div>
+          <div className="container-custom relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
+            >
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text">
+                Our Services
+              </h1>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                Comprehensive software solutions tailored to your business needs
+              </p>
+            </motion.div>
+          </div>
+        </section>
+      </div>
 
       {/* Services Grid */}
-      <section className="py-20">
+      <section className="relative z-10 py-20">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
@@ -152,31 +154,33 @@ export default function ServicesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card group cursor-pointer"
+                className="group cursor-pointer bg-[#1A1A1A] rounded-lg overflow-hidden"
                 onClick={() => setActiveService(index)}
               >
-                <div className="relative aspect-video mb-6 rounded-lg overflow-hidden">
+                <div className="relative aspect-video">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/50 to-transparent" />
                 </div>
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-[#00FF9D] transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-gray-400 mb-6">{service.description}</p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-300">
-                      <span className="w-1.5 h-1.5 bg-[#00FF9D] rounded-full mr-2"></span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                <div className="p-6 relative">
+                  <div className="text-4xl mb-4 text-[#00FF9D]">{service.icon}</div>
+                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#00FF9D] transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-400 mb-6">{service.description}</p>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-300">
+                        <span className="w-1.5 h-1.5 bg-[#00FF9D] rounded-full mr-2"></span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -184,8 +188,8 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-20">
-        <div className="absolute inset-0 bg-[#0A0A0A]">
+      <section className="relative py-20">
+        <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#00FF9D]/10 to-[#6B46FF]/10 animate-pulse"></div>
           <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(to right, rgba(0,255,157,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,157,0.05) 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
         </div>

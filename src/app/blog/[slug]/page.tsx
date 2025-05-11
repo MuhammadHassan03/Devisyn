@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, notFound } from 'next/navigation';
 import { FaTwitter, FaLinkedin, FaArrowLeft, FaEdit } from 'react-icons/fa';
 import { formatDate, calculateReadTime } from '@/lib/utils';
 import Image from 'next/image';
@@ -40,44 +40,6 @@ const BlogPostSkeleton = () => (
   </div>
 );
 
-const NotFoundPage = ({ onBack }: { onBack: () => void }) => (
-  <div className="min-h-[calc(100vh-80px)] pt-20 bg-[#0A0A0A]">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center py-16">
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="bg-[#1A1A1A] p-8 rounded-lg shadow-lg max-w-md mx-auto"
-        >
-          <h1 className="text-4xl font-bold text-white mb-4">404</h1>
-          <h2 className="text-2xl font-semibold text-white mb-4">Blog Post Not Found</h2>
-          <p className="text-gray-400 mb-6">
-            The blog post you're looking for doesn't exist or has been moved.
-          </p>
-          <div className="flex flex-col space-y-4">
-            <button
-              onClick={onBack}
-              className="flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              <span className="mr-2">
-                <FaArrowLeft />
-              </span>
-              Back to Blog
-            </button>
-            <Link
-              href="/blog"
-              className="flex items-center justify-center px-6 py-3 bg-[#2A2A2A] text-white rounded-lg hover:bg-[#3A3A3A] transition-colors"
-            >
-              Browse All Posts
-            </Link>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  </div>
-);
-
 export default function BlogPostPage() {
   const params = useParams();
   const router = useRouter();
@@ -93,7 +55,7 @@ export default function BlogPostPage() {
         const response = await fetch(`/api/blogs/${params.slug}`);
         if (!response.ok) {
           if (response.status === 404) {
-            setError('Blog not found');
+            notFound();
           } else {
             setError('Failed to fetch blog');
           }
@@ -123,7 +85,7 @@ export default function BlogPostPage() {
   }
 
   if (error || !blog) {
-    return <NotFoundPage onBack={() => router.push('/blog')} />;
+    notFound();
   }
 
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
@@ -156,7 +118,7 @@ export default function BlogPostPage() {
             <div className="flex justify-between items-start mb-4">
               <h1 className="text-3xl font-bold text-white">{blog.title}</h1>
               <Link
-                href={`/admin/dashboard/edit/${blog.slug}`}
+                href={`/admin/dashboard/edit/${blog._id}`}
                 className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 <span className="mr-2">

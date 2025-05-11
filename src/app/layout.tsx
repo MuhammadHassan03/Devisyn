@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
@@ -6,9 +6,18 @@ import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/context/ThemeContext'
 import { Providers } from './providers'
 import { Toaster } from 'react-hot-toast'
-import AdminRouteCheck from '@/components/AdminRouteCheck'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0A0A0A' },
+  ],
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://devisyn.com'),
@@ -50,6 +59,22 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
+  applicationName: 'Devisyn',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Devisyn',
+  },
 }
 
 export default function RootLayout({
@@ -58,34 +83,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link
-          rel="icon"
-          href="/icon?<generated>"
-          type="image/<generated>"
-          sizes="<generated>"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="/apple-icon?<generated>"
-          type="image/<generated>"
-          sizes="<generated>"
-        />
-      </head>
+    <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
         <Providers>
           <ThemeProvider>
-            <AdminRouteCheck>
-              <Header />
-            </AdminRouteCheck>
+            <Header />
             <main className="min-h-screen">
               {children}
             </main>
-            <AdminRouteCheck>
-              <Footer />
-            </AdminRouteCheck>
+            <Footer />
             <Toaster position="top-right" />
           </ThemeProvider>
         </Providers>

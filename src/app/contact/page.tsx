@@ -89,11 +89,11 @@ export default function Contact() {
               Have a project in mind? Let's discuss how we can help bring your vision to life.
             </p>
             <div className="flex flex-col items-center space-y-4 mt-8">
-              <a href="mailto:devisynoffical@gmail.com" className="flex items-center text-gray-300 hover:text-[#00FF9D] transition-colors">
+              <a href="mailto:devisynstudio@gmail.com" className="flex items-center text-gray-300 hover:text-[#00FF9D] transition-colors">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                devisynoffical@gmail.com
+                devisynstudio@gmail.com
               </a>
               <a href="tel:+923175429933" className="flex items-center text-gray-300 hover:text-[#00FF9D] transition-colors">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

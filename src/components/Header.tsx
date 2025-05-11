@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
 
@@ -26,7 +27,6 @@ export default function Header() {
     { name: 'Services', href: '/services' },
     { name: 'Work', href: '/work' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Blog', href: '/blog' },
   ];
 
   return (
@@ -41,10 +41,14 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <Link href="/" className="flex items-center">
-            <span className="text-3xl font-bold bg-gradient-to-r from-green-400 to-purple-500 bg-clip-text text-transparent">
+          <Link href="/" className="flex items-center group">
+            <motion.span 
+              className="text-3xl font-bold bg-gradient-to-r from-green-400 to-purple-500 bg-clip-text text-transparent"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               Devisyn
-            </span>
+            </motion.span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -58,11 +62,29 @@ export default function Header() {
                     ? 'text-white'
                     : 'text-gray-300 hover:text-white'
                 }`}
+                onMouseEnter={() => setHoveredItem(item.name)}
+                onMouseLeave={() => setHoveredItem(null)}
               >
-                {item.name}
+                <motion.span
+                  animate={{ 
+                    y: hoveredItem === item.name ? -2 : 0,
+                    color: hoveredItem === item.name ? '#ffffff' : pathname === item.href ? '#ffffff' : '#d1d5db'
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {item.name}
+                </motion.span>
                 {pathname === item.href && (
                   <motion.div
                     layoutId="underline"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-purple-500"
+                  />
+                )}
+                {hoveredItem === item.name && pathname !== item.href && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-purple-500"
                   />
                 )}
@@ -71,9 +93,11 @@ export default function Header() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
+          <motion.button
             className="md:hidden p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             <span className="sr-only">Open menu</span>
             <svg
@@ -98,7 +122,7 @@ export default function Header() {
                 />
               )}
             </svg>
-          </button>
+          </motion.button>
         </div>
       </div>
 
