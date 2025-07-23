@@ -9,47 +9,77 @@ const DEFAULT_IMAGE = '/images/default-blog.svg';
 
 const projects = [
   {
-    id: 1,
-    title: 'E-Commerce Platform',
+    id: 101,
+    title: 'Tella – Screen Recording App',
     category: 'web',
-    image: '/projects/ecommerce.jpg',
-    description: 'A full-featured e-commerce platform with advanced filtering and payment integration.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    link: '/work/ecommerce-platform',
-    features: ['Advanced Filtering', 'Payment Integration', 'Real-time Updates', 'Admin Dashboard']
+    image: 'https://api.microlink.io/?url=https://www.tella.com&screenshot=true&meta=false&embed=screenshot.url',
+    description: 'Record beautiful screen and camera videos instantly with Tella, a modern Loom alternative.',
+    technologies: ['React', 'Next.js', 'Supabase', 'TailwindCSS'],
+    link: 'https://www.tella.com',
+    features: ['Video Editing', 'Screen + Cam Record', 'Cloud Sync', 'Branding Tools']
   },
   {
-    id: 2,
-    title: 'Mobile Banking App',
-    category: 'mobile',
-    image: '/projects/banking.jpg',
-    description: 'Secure and intuitive mobile banking application with biometric authentication.',
-    technologies: ['React Native', 'Firebase', 'Redux', 'Node.js'],
-    link: '/work/mobile-banking',
-    features: ['Biometric Auth', 'Real-time Transactions', 'Push Notifications', 'Secure Messaging']
-  },
-  {
-    id: 3,
-    title: 'AI-Powered Analytics',
+    id: 102,
+    title: 'Wasp – AI-Powered Dev Tool',
     category: 'ai',
-    image: '/projects/analytics.jpg',
-    description: 'Advanced analytics platform with machine learning capabilities.',
-    technologies: ['Python', 'TensorFlow', 'React', 'AWS'],
-    link: '/work/ai-analytics',
-    features: ['Predictive Analysis', 'Data Visualization', 'Real-time Insights', 'Custom Reports']
+    image: 'https://api.microlink.io/?url=https://wasp.dev&screenshot=true&meta=false&embed=screenshot.url',
+    description: 'Build full-stack apps faster with Wasp, a modern framework powered by AI-assisted coding.',
+    technologies: ['React', 'Node.js', 'Prisma', 'OpenAI'],
+    link: 'https://wasp.dev',
+    features: ['AI Coding Assistant', 'CLI Generator', 'User Auth', 'Job Scheduling']
   },
   {
-    id: 4,
-    title: 'Cloud Migration',
-    category: 'cloud',
-    image: '/projects/cloud.jpg',
-    description: 'Enterprise cloud migration project with zero downtime.',
-    technologies: ['AWS', 'Docker', 'Kubernetes', 'Terraform'],
-    link: '/work/cloud-migration',
-    features: ['Zero Downtime', 'Data Security', 'Performance Monitoring', 'Cost Optimization']
+    id: 103,
+    title: 'Typedream – No-Code Site Builder',
+    category: 'web',
+    image: 'https://api.microlink.io/?url=https://www.typedream.com&screenshot=true&meta=false&embed=screenshot.url',
+    description: 'Typedream helps you build websites like Notion pages. No-code builder for creators and founders.',
+    technologies: ['React', 'Firebase', 'TailwindCSS'],
+    link: 'https://www.typedream.com',
+    features: ['Drag & Drop Builder', 'Responsive Design', 'Templates', 'AI Copywriting']
   },
-  // Add more projects as needed
+  {
+    id: 104,
+    title: 'Opal – Focus Management App',
+    category: 'mobile',
+    image: 'https://api.microlink.io/?url=https://www.opal.so&screenshot=true&meta=false&embed=screenshot.url',
+    description: 'A mobile productivity app that helps users stay focused by blocking distractions.',
+    technologies: ['React Native', 'Firebase', 'Redux'],
+    link: 'https://www.opal.so',
+    features: ['Time Blocking', 'App Blocking', 'Focus Reports', 'Deep Work Sessions']
+  },
+  {
+    id: 105,
+    title: 'Superhuman – Fast Email Client',
+    category: 'web',
+    image: 'https://api.microlink.io/?url=https://superhuman.com&screenshot=true&meta=false&embed=screenshot.url',
+    description: 'Superhuman is a premium email client with AI-powered features and stunning UX.',
+    technologies: ['React', 'Electron', 'AI Models'],
+    link: 'https://superhuman.com',
+    features: ['AI Smart Replies', 'Command Bar', 'Instant Search', 'Split Inbox']
+  },
+  {
+    id: 106,
+    title: 'Linear – Issue Tracker',
+    category: 'web',
+    image: 'https://api.microlink.io/?url=https://linear.app&screenshot=true&meta=false&embed=screenshot.url',
+    description: 'Linear offers high-performance issue tracking with elegant UI for software teams.',
+    technologies: ['React', 'GraphQL', 'TailwindCSS'],
+    link: 'https://linear.app',
+    features: ['Team Collaboration', 'Keyboard Shortcuts', 'Milestones', 'Fast UI']
+  },
+  {
+    id: 107,
+    title: 'Cron – Calendar App',
+    category: 'mobile',
+    image: 'https://api.microlink.io/?url=https://cron.com&screenshot=true&meta=false&embed=screenshot.url',
+    description: 'Cron is a beautifully designed calendar app for professionals and remote teams.',
+    technologies: ['React Native', 'Electron', 'Google Calendar API'],
+    link: 'https://cron.com',
+    features: ['Smart Scheduling', 'Time Zone Support', 'Cross-Platform Sync', 'Minimal UI']
+  }
 ];
+
 
 const categories = [
   { id: 'all', name: 'All Projects' },
@@ -197,7 +227,7 @@ export default function Work() {
                           whileTap={{ scale: 0.95 }}
                           className="w-full py-2 px-4 bg-gradient-to-r from-[#00FF9D] to-[#6B46FF] text-white rounded-lg font-medium hover:shadow-lg transition-all duration-300"
                         >
-                          View Project Details
+                          Live Preview
                         </motion.button>
                       </Link>
                     </motion.div>
@@ -210,4 +240,4 @@ export default function Work() {
       </section>
     </div>
   );
-} 
+}
