@@ -21,7 +21,7 @@ export const siteConfig = {
     founded: '2020',
     location: 'San Francisco, CA',
     email: 'contact@devisyn.com',
-    phone: '+1 (555) 123-4567',
+    phone: '+1 (929) 699-5923',
     address: '123 Tech Street, San Francisco, CA 94105',
   },
   social: {
