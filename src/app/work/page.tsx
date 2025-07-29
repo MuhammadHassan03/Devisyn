@@ -227,7 +227,7 @@ export default function Work() {
                           whileTap={{ scale: 0.95 }}
                           className="w-full py-2 px-4 bg-gradient-to-r from-[#00FF9D] to-[#6B46FF] text-white rounded-lg font-medium hover:shadow-lg transition-all duration-300"
                         >
-                          Live Preview
+                          View Project 
                         </motion.button>
                       </Link>
                     </motion.div>
