@@ -1,6 +1,4 @@
 .footer {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
   overflow: hidden;
   padding: var(--section-y) var(--gutter) var(--space-5);
   background: var(--ink);

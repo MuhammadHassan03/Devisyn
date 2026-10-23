@@ -61,6 +61,14 @@ async function start(): Promise<Runtime | null> {
   gsap.ticker.lagSmoothing(0);
   linkMarqueesToScroll(lenis, gsap);
 
+  // sections render lazily and fonts/images settle after load, so trigger positions are re-measured
+  // whenever the page height changes. Without this, reveals near the bottom can sit below their trigger.
+  let refresh = 0;
+  new ResizeObserver(() => {
+    window.clearTimeout(refresh);
+    refresh = window.setTimeout(() => ScrollTrigger.refresh(), 150);
+  }).observe(document.body);
+
   return { gsap, ScrollTrigger, lenis };
 }
 
