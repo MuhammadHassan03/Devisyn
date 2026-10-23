@@ -1,0 +1,48 @@
+.group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  margin-bottom: var(--space-2);
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-mono);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  cursor: pointer;
+}
+
+.face {
+  display: inline-block;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border);
+  border-radius: var(--r-pill);
+  background: var(--white);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  transition: background var(--dur-base) var(--ease), color var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
+}
+
+.chip:hover .face { transform: translateY(-2px); }
+
+.chip input:checked + .face {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.chip input:focus-visible + .face {
+  outline: 3px solid var(--green);
+  outline-offset: 3px;
+}

@@ -1,0 +1,54 @@
+.section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+  padding: var(--section-y) var(--gutter) var(--space-7);
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-7);
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: clamp(28px, 6vw, 88px);
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.badgeSlot {
+  position: absolute;
+  right: -60px;
+  bottom: -70px;
+  opacity: 0.9;
+}
+
+.copy {
+  position: relative;
+  flex: 1 1 460px;
+  min-width: 0;
+}
+
+.body {
+  max-width: 30em;
+  margin-top: var(--space-5);
+  opacity: 0.8;
+}
+
+.checks {
+  margin-top: var(--space-5);
+  font-weight: 500;
+}
+
+.formWrap {
+  position: relative;
+  flex: 1 1 380px;
+  min-width: 0;
+  padding: var(--space-5);
+  border-radius: var(--r-lg);
+  background: var(--cream);
+  color: var(--ink);
+}

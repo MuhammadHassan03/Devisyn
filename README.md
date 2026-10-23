@@ -1,176 +1,78 @@
-# Devisyn - Modern Web Development Agency Theme
+# Devisyn landing page
 
-A modern, responsive Next.js theme for web development agencies. Built with TypeScript, Tailwind CSS, and MongoDB.
+One-page marketing site. Next.js (App Router) + TypeScript + CSS Modules. No UI or animation library, no database.
 
-## Table of Contents
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Customization](#customization)
-- [Features](#features)
-- [File Structure](#file-structure)
-- [Editing Guide](#editing-guide)
+## Run it
 
-## Installation
-
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Set up environment variables:
-   ```bash
-   cp .env.example .env.local
-   ```
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-## Configuration
-
-### Environment Variables
-Create a `.env.local` file with the following variables:
-```env
-MONGODB_URI=your_mongodb_connection_string
-NEXTAUTH_SECRET=your_nextauth_secret
-NEXTAUTH_URL=http://localhost:3000
-```
-
-### MongoDB Setup
-1. Create a MongoDB database
-2. Update the connection string in `.env.local`
-3. The theme will automatically create necessary collections
-
-## Customization
-
-### Colors and Theme
-Edit `tailwind.config.js` to customize colors and theme:
-```javascript
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#your-color',
-        secondary: '#your-color',
-      },
-    },
-  },
-}
-```
-
-### Fonts
-1. Add your fonts to `public/fonts/`
-2. Update `src/app/globals.css` with your font imports
-3. Update font families in `tailwind.config.js`
-
-### Images
-1. Replace logo: `public/images/logo.svg`
-2. Replace favicon: `public/favicon.ico`
-3. Add your images to `public/images/`
-
-## Features
-
-### Blog System
-- Create, edit, and delete blog posts
-- Rich text editor with image support
-- SEO-friendly URLs
-- Featured images
-- Draft and published states
-
-### Admin Dashboard
-- Secure authentication
-- Blog management
-- User-friendly interface
-- Responsive design
-
-### SEO Optimization
-- Meta tags
-- Open Graph tags
-- Schema markup
-- Sitemap generation
-
-## File Structure
-
-```
-src/
-├── app/                    # Next.js app directory
-│   ├── admin/             # Admin routes
-│   ├── api/               # API routes
-│   ├── blog/              # Blog routes
-│   └── page.tsx           # Home page
-├── components/            # Reusable components
-├── lib/                   # Utility functions
-└── styles/               # Global styles
-```
-
-## Editing Guide
-
-### Home Page
-Edit `src/app/page.tsx` to customize:
-- Hero section
-- Services
-- Portfolio
-- Testimonials
-- Contact form
-
-### Blog Posts
-1. Access admin dashboard at `/admin`
-2. Create new posts at `/admin/dashboard/create`
-3. Edit existing posts at `/admin/dashboard/edit/[slug]`
-
-### Styling
-1. Global styles: `src/app/globals.css`
-2. Component styles: `src/components/*.tsx`
-3. Tailwind configuration: `tailwind.config.js`
-
-### API Endpoints
-- Blog posts: `/api/blogs`
-- Authentication: `/api/auth`
-- Contact form: `/api/contact`
-
-### Database Schema
-```typescript
-interface Blog {
-  _id: string;
-  title: string;
-  slug: string;
-  content: string;
-  excerpt: string;
-  featuredImage: string;
-  status: 'draft' | 'published';
-  createdAt: string;
-  updatedAt: string;
-}
-```
-
-## EmailJS Configuration
-
-To set up the contact form functionality, you'll need to configure EmailJS:
-
-1. Sign up for a free account at [EmailJS](https://www.emailjs.com/)
-2. Create a new email service (Gmail, Outlook, etc.)
-3. Create an email template with the following variables:
-   - `from_name`: Sender's name
-   - `from_email`: Sender's email
-   - `message`: Message content
-   - `subject`: Email subject
-
-4. Create a `.env.local` file in the root directory and add your EmailJS credentials:
-```env
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
-```
-
-5. Install the EmailJS package:
 ```bash
-npm install @emailjs/browser
+npm install
+cp .env.example .env.local   # optional, see below
+npm run dev                  # http://localhost:3000
+npm run build && npm start   # production check
 ```
 
-The contact form will now send emails using your configured EmailJS service.
+## Lead delivery (contact form)
 
-## Support
-For support, please contact the theme author through Envato.
+Every submission goes to `app/api/lead/route.ts`, which validates it, rate-limits it (5 per 10 minutes per IP), and runs two deliveries in parallel: a row in your Google Sheet and an email to you. The visitor sees success if at least one worked. If both fail they see your email address as a fallback. With neither configured (local dev) the lead is logged to the server console instead.
 
-## License
-This theme is licensed under the Envato Regular License. 
+### Environment variables
+
+Put these in `.env.local` for local work and in Vercel (Project Settings, Environment Variables) for production. Never paste keys into chat or commit them. `.env.example` lists them all.
+
+| Name | Required | What it does |
+| --- | --- | --- |
+| `RESEND_API_KEY` | For email | Resend API key (setup below). |
+| `LEAD_TO_EMAIL` | For email | Where leads are emailed: `devisynstudio@gmail.com`. |
+| `LEAD_FROM_EMAIL` | No | Sender. Defaults to `Devisyn Leads <onboarding@resend.dev>`. When you own a domain, verify it in Resend and change only this line. |
+| `SHEET_WEBHOOK_URL` | For the sheet | The Apps Script Web app URL (setup below). |
+| `SHEET_WEBHOOK_SECRET` | For the sheet | The same random string you put in the script's `SECRET` property. |
+| `SHEET_URL` | No | Link to the sheet, shown as a button in the lead email. |
+
+### 1. Google Sheet (free)
+
+1. Go to sheets.google.com, signed in as devisynstudio@gmail.com, and create a blank sheet named **Devisyn Leads**. Copy its URL for `SHEET_URL`.
+2. In the sheet: **Extensions > Apps Script**.
+3. Delete the sample code and paste the whole of `docs/google-sheet-lead-script.gs`. Click **Save**.
+4. Click the gear (**Project Settings**), scroll to **Script properties**, click **Add script property**. Name `SECRET`, value a long random string (for example 40 random letters and digits from a password manager). Save. Use the same string for `SHEET_WEBHOOK_SECRET`.
+5. Click **Deploy > New deployment**, the gear next to "Select type", choose **Web app**. Set **Execute as: Me** and **Who has access: Anyone**. Click **Deploy** and approve the permissions (Google shows "unverified app" for your own script: Advanced > Go to project).
+6. Copy the **Web app URL** (ends in `/exec`) into `SHEET_WEBHOOK_URL`. Opening it in a browser should show `{"ok":true,"service":"devisyn lead webhook"}`.
+7. If you edit the script later, use **Deploy > Manage deployments > edit > New version**, otherwise the URL keeps running the old code.
+
+The script creates a `Leads` tab with the columns Date, Name, Business, Type, Email, Phone, Source / UTM, Page, Status (starts as "New"), Notes. Requests without the secret are rejected.
+
+### 2. Email with Resend (free tier)
+
+1. Sign up at resend.com **with devisynstudio@gmail.com** (the default sender only delivers to the account owner's email).
+2. In the dashboard open **API Keys > Create API Key**, permission **Sending access**, and copy the key (starts with `re_`). It is shown once. Put it in `RESEND_API_KEY`.
+3. Leads arrive from `Devisyn Leads <onboarding@resend.dev>` with subject `New lead: {business} ({type})`. **Reply** goes to the lead (`reply_to`).
+
+Switching to your own domain later: add the domain in Resend, add the DNS records it shows, then set `LEAD_FROM_EMAIL=Devisyn Leads <leads@yourdomain.com>`. No code change.
+
+### 3. Optional: Google Analytics
+
+If GA4 is installed on the page (`window.gtag`), a successful submission fires the `generate_lead` event with the business type and UTM tags. Nothing happens if GA is not there.
+
+### What is captured per lead
+
+Name, business, type, email, phone (optional), page URL, referrer, `utm_source` / `utm_medium` / `utm_campaign` (remembered from the landing URL for the visit), user agent, and a timestamp in America/Chicago.
+
+## Where things live
+
+- `content/site.ts`: every word of copy, plus the site URL. Prices, setup fees and the hero pill live here too.
+- `styles/tokens.css`: colours, fonts, radii, shadows, spacing. `styles/animations.css`: all keyframes, all off under `prefers-reduced-motion`.
+- `components/ui/`: primitives. `components/sections/`: one file per page section. `app/page.tsx` composes them.
+- `app/api/lead/route.ts`: contact form endpoint with honeypot.
+- SEO: `app/robots.ts`, `app/sitemap.ts`, `app/llms.txt/route.ts`, `app/opengraph-image.png`, brand kit in `public/brand/`, `lib/jsonld.ts`. See `SEO-NOTES.md`.
+
+Client components (`"use client"`) are only the rotating word, hero call feed, services explorer, pricing toggle, FAQ accordion and contact form.
+
+## Deploy to Vercel
+
+1. Push the repo to GitHub and import it at vercel.com/new (framework is detected automatically).
+2. Add the three env vars above under Project Settings, Environment Variables.
+3. Deploy. If the domain is not `devisyn.vercel.app`, change `SITE_URL` in `content/site.ts`.
+4. After deploy: test the form, run the Rich Results Test, submit `/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
+
+## Checks
+
+`npm run build` passes. Lighthouse on `/` (local production build): SEO 100, accessibility 100, best practices 100, performance 100 desktop and 93 mobile.

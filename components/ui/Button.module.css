@@ -1,0 +1,27 @@
+.button {
+  display: inline-block;
+  border: var(--border);
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-btn);
+}
+
+.primary { background: var(--ink); color: var(--cream); }
+.secondary { background: var(--white); color: var(--ink); }
+.outline { background: transparent; color: var(--ink); }
+.light { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+.light:hover { box-shadow: 0 10px 0 -4px var(--cream); }
+
+.sm { padding: var(--space-3) var(--space-5); font-size: var(--fs-small); }
+.md { padding: var(--space-3); font-size: var(--fs-body); }
+.lg { padding: var(--space-4) var(--space-6); font-size: var(--fs-body); }
+
+.block { display: block; width: 100%; }

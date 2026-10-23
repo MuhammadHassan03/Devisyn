@@ -1,0 +1,148 @@
+.heading {
+  margin-bottom: var(--space-7);
+}
+
+.tabs {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  transition: transform var(--dur-base) var(--ease), width var(--dur-base) var(--ease), height var(--dur-base) var(--ease);
+}
+
+.tab {
+  position: relative;
+  padding: var(--space-3) var(--space-5);
+  border: var(--border);
+  border-radius: var(--r-pill);
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  transition: color var(--dur-base) var(--ease), background var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
+}
+
+.tab:hover { transform: translateY(-2px); }
+
+.tabActive {
+  background: transparent;
+  color: var(--cream);
+}
+
+.panels {
+  display: grid;
+}
+
+.panel {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease), visibility 0s linear var(--dur-base);
+}
+
+.panelActive {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease), visibility 0s;
+}
+
+.audience {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-mono);
+}
+
+.headline {
+  max-width: 18em;
+  margin: var(--space-3) 0 var(--space-6);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-h2);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.cell {
+  display: flex;
+  flex: 1 1 300px;
+  min-width: 0;
+}
+
+.card { flex: 1; }
+
+.big {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-figure);
+  line-height: 1;
+  letter-spacing: var(--ls-display);
+}
+
+.bigDark { color: var(--mint); }
+
+.cardTitle {
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  letter-spacing: var(--ls-h3);
+  line-height: 1.2;
+}
+
+.text,
+.textDark { margin-top: var(--space-2); }
+.text { color: var(--text-body); }
+.textDark { opacity: 0.8; }
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.planLabel {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-mono);
+}
+
+.planName {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h3);
+  letter-spacing: var(--ls-h3);
+}
+
+.planPrice {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-small);
+  letter-spacing: 0;
+}

@@ -1,0 +1,76 @@
+.root {
+  position: relative;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) 0;
+  border: 0;
+  background: none;
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+.trigger:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.chevron {
+  display: inline-block;
+  font-size: var(--fs-mono);
+  transition: transform var(--dur-base) var(--ease);
+}
+
+.chevronOpen { transform: rotate(180deg); }
+
+/* the panel starts at the trigger's edge so the pointer never crosses a gap */
+.panel {
+  position: absolute;
+  top: 100%;
+  left: -16px;
+  z-index: 20;
+  padding-top: var(--space-2);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(calc(var(--reveal-y) / -2));
+  transition: opacity var(--dur-fast) var(--ease), transform var(--dur-base) var(--ease), visibility 0s linear var(--dur-fast);
+}
+
+.panelOpen {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition: opacity var(--dur-fast) var(--ease), transform var(--dur-base) var(--ease), visibility 0s;
+}
+
+.list {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 280px;
+  padding: var(--space-3);
+  border: var(--border);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+}
+
+.twoColumns { grid-template-columns: repeat(2, minmax(220px, 1fr)); min-width: 480px; }
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-3) var(--space-3);
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+.item:hover,
+.item:focus-visible {
+  background: var(--cream);
+  transform: translateX(2px);
+}
+
+.itemTitle { font-size: var(--fs-small); font-weight: 600; }
+.itemText { font-size: var(--fs-small); color: var(--text-muted); line-height: 1.4; }

@@ -1,0 +1,6 @@
+.band {
+  overflow: hidden;
+  border-block: var(--border);
+  background: var(--ink);
+  color: var(--cream);
+}

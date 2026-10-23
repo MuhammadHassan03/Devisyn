@@ -1,0 +1,84 @@
+/*
+ * Vertical rhythm: plain sections add space above themselves; bands pad inside and add space
+ * above themselves when they follow a plain section. Gaps are always one --section-y.
+ */
+.section {
+  padding-inline: var(--gutter);
+  /* sections far from the viewport skip style, layout and paint until they are near */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+.plain {
+  padding-top: var(--section-y);
+}
+
+.peach,
+.ink {
+  padding-block: var(--section-y);
+}
+
+.plain + .peach,
+.plain + .ink {
+  margin-top: var(--section-y);
+}
+
+.peach {
+  background: var(--peach);
+  border-block: var(--border);
+}
+
+.ink {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-mono);
+}
+
+.mint { color: var(--mint); }
+.peachText { color: var(--peach); }
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  letter-spacing: var(--ls-h2);
+}
+
+.headingLg {
+  font-size: clamp(44px, 5.4vw, 80px);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+}
+
+.afterEyebrow { margin-top: var(--space-4); }
+
+.center { text-align: center; }
+
+.accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* each word sits in a mask; padding keeps descenders and italic overhang from being clipped */
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.08em 0.06em 0.16em;
+  margin: -0.08em -0.06em -0.16em;
+}
+
+.word { display: inline-block; }

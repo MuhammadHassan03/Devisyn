@@ -1,0 +1,151 @@
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: clamp(40px, 5vw, 64px) var(--gutter) var(--section-y);
+}
+
+.copy {
+  flex: 1 1 560px;
+  min-width: 0;
+}
+
+.title {
+  margin-top: var(--space-5);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+}
+
+.lead {
+  max-width: 32em;
+  margin-top: var(--space-5);
+  font-size: var(--fs-lede);
+  color: var(--text-body);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.checks {
+  margin-top: var(--space-5);
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+/* visual column */
+
+.visual {
+  position: relative;
+  flex: 1 1 440px;
+  min-width: 0;
+  min-height: 620px;
+}
+
+.panel {
+  position: absolute;
+  inset: 0 0 0 8%;
+  border: var(--border);
+  border-radius: var(--r-lg);
+  background: var(--mint);
+}
+
+.badgeSlot {
+  position: absolute;
+  right: -22px;
+  top: -30px;
+}
+
+.feedSlot {
+  position: absolute;
+  top: 54px;
+  left: 0;
+  width: 80%;
+}
+
+.callSlot {
+  position: absolute;
+  right: 4%;
+  bottom: 34px;
+  width: 58%;
+}
+
+/* a mask so each headline word rises out of its own line */
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.08em 0.06em 0.16em;
+  margin: -0.08em -0.06em -0.16em;
+}
+
+.call {
+  padding: var(--space-4) var(--space-4);
+  border: var(--border);
+  border-radius: var(--r-lg);
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.callTop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.phone {
+  display: inline-flex;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--green-on-dark);
+}
+
+.bars {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 3px;
+  height: 30px;
+}
+
+.bar {
+  width: 4px;
+  height: 100%;
+  border-radius: var(--r-pill);
+}
+
+.bar.mint { background: var(--mint); }
+.bar.peach { background: var(--peach); }
+.bar.lilac { background: var(--lilac); }
+
+.quote {
+  margin-top: var(--space-3);
+  font-size: var(--fs-small);
+  opacity: 0.85;
+}
+
+.tag {
+  position: absolute;
+  left: 3%;
+  bottom: -14px;
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 520px) {
+  .visual { min-height: 700px; }
+  .callSlot { width: 66%; }
+}

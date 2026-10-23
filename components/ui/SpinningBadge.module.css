@@ -1,0 +1,8 @@
+.badge {
+  display: block;
+  max-width: none;
+}
+
+.text {
+  font-family: var(--font-mono);
+}

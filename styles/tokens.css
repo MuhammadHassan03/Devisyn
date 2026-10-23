@@ -1,0 +1,78 @@
+/* Motion tokens (--ease, --dur-*, --stagger, --reveal-y, --loop-*) are injected on <html> from lib/motion.ts. */
+:root {
+  /* colors */
+  --ink: #121314;
+  --ink-soft: #1c1d1f;
+  --ink-line: #3a3b3d;
+  --ink-dash: #4a4b4d;
+  --cream: #fff8e8;
+  --white: #ffffff;
+  --mint: #bfe8cf;
+  --peach: #ffc9a8;
+  --lilac: #d9ccff;
+  --green: #2e9e62;
+  --green-on-dark: #3fcb7e;
+  --green-deep: #1d6e43;
+  --rust: #9a4320;
+  --violet: #5b3fb8;
+  --red: #b4412a;
+  --miss-bg: #ffe1d2;
+  --ok-bg: #ddf3e5;
+  --track: #e3e0d6;
+  --text-strong: #2a2926;
+  --text-body: #3b3b36;
+  --text-muted: #4b4a44;
+  --text-faint: #5a5952;
+
+  /* font families (injected by next/font in app/layout.tsx) */
+  --font-body: var(--font-hanken), system-ui, sans-serif;
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  /* type scale: display / h2 / stat / figure / h3 / lede / body / small / mono */
+  --fs-display: clamp(46px, 7.2vw, 108px);
+  --fs-h2: clamp(40px, 5vw, 72px);
+  --fs-stat: clamp(60px, 8vw, 84px);
+  --fs-figure: clamp(44px, 4.4vw, 56px);
+  --fs-panel: clamp(32px, 3.4vw, 46px);
+  --fs-h3: clamp(20px, 2.2vw, 24px);
+  --fs-lede: 20px;
+  --fs-body: 17px;
+  --fs-small: 14px;
+  --fs-mono: 12px;
+  --ls-display: -0.05em;
+  --ls-h2: -0.045em;
+  --ls-h3: -0.03em;
+  --ls-mono: 0.1em;
+  --lh-display: 0.95;
+  --lh-tight: 1.05;
+
+  /* shape: one border weight, three radii */
+  --border: 1.5px solid var(--ink);
+  --r-pill: 999px;
+  --r-lg: 28px;
+  --r-sm: 16px;
+
+  /* shadows */
+  --shadow-card: 8px 8px 0 var(--ink);
+  --shadow-lift: 10px 12px 0 var(--ink);
+  --shadow-btn: 0 10px 0 -4px var(--ink);
+
+  /* spacing scale (4px base) and layout */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --gutter: max(20px, 4vw);
+  --container: 1360px;
+  --section-y: clamp(64px, 9vw, 104px);
+  --measure: 1000px;
+  /* space held for the lazily loaded demo and calculator so nothing shifts */
+  --demo-min-height: 1180px;
+  --calculator-min-height: 760px;
+}

@@ -1,0 +1,7 @@
+.heading {
+  margin-bottom: var(--space-7);
+}
+
+.list {
+  max-width: var(--measure);
+}

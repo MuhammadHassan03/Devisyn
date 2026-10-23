@@ -1,0 +1,41 @@
+.heading {
+  margin-bottom: var(--space-7);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.cell {
+  display: flex;
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.card {
+  flex: 1;
+}
+
+.value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(60px, 8vw, 84px);
+  line-height: 1;
+  letter-spacing: var(--ls-display);
+}
+
+.text,
+.textSoft {
+  margin-top: var(--space-3);
+}
+
+.text { color: var(--text-strong); }
+.textSoft { color: var(--text-body); }
+
+.source {
+  margin-top: var(--space-4);
+  font-size: var(--fs-small);
+  color: var(--text-faint);
+}

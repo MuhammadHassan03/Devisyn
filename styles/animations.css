@@ -1,0 +1,102 @@
+/*
+ * Every keyframe and animation helper lives here, driven by the tokens from lib/motion.ts.
+ * Animations only exist for users who have not asked for reduced motion.
+ * Entrance animations use fill-mode "backwards" so they never pin a transform after they end.
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes marquee-reverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-12px) rotate(-1deg); }
+  }
+  @keyframes float-alt {
+    0%, 100% { transform: translateY(0) rotate(3deg); }
+    50% { transform: translateY(-9px) rotate(2deg); }
+  }
+  /* the first-load sequence moves content but never hides it, so text paints (and counts for LCP) at once */
+  @keyframes rise {
+    from { transform: translateY(var(--reveal-y)); }
+  }
+  @keyframes rise-word {
+    from { transform: translateY(45%); }
+  }
+  @keyframes pop {
+    0% { opacity: 0; transform: translateY(var(--reveal-y)) scale(0.94); }
+    70% { transform: translateY(-3px) scale(1.02); }
+  }
+  @keyframes ring {
+    0%, 55%, 100% { transform: rotate(0); }
+    8%, 24% { transform: rotate(-16deg); }
+    16%, 32% { transform: rotate(16deg); }
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes wave {
+    0%, 100% { transform: scaleY(0.3); }
+    50% { transform: scaleY(1); }
+  }
+  @keyframes travel {
+    to { transform: translateX(calc(100cqw - 18px)); }
+  }
+  @keyframes draw {
+    from { stroke-dashoffset: 120; }
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes blink {
+    50% { opacity: 0.2; }
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  /* ambient loops */
+  .anim-marquee { animation: marquee var(--loop-marquee) linear infinite; }
+  .anim-marquee-reverse { animation: marquee-reverse var(--loop-marquee-reverse) linear infinite; }
+  .marquee-band:hover .anim-marquee,
+  .marquee-band:hover .anim-marquee-reverse { animation-play-state: paused; }
+  .anim-float { animation: float var(--loop-float) ease-in-out infinite; }
+  .anim-float-alt { animation: float-alt var(--loop-float-alt) ease-in-out infinite; }
+  .anim-ring { animation: ring var(--loop-ring) ease-in-out infinite; transform-origin: 50% 50%; }
+  .anim-spin { animation: spin var(--loop-spin) linear infinite; }
+  .anim-bar { animation: wave var(--loop-wave) ease-in-out infinite; transform-origin: 50% 50%; }
+  .anim-travel { animation: travel var(--loop-travel) cubic-bezier(0.6, 0, 0.4, 1) infinite alternate; }
+  .anim-blink { animation: blink var(--loop-blink) steps(2) infinite; }
+  .anim-wiggle { animation: wiggle var(--loop-wiggle) ease-in-out infinite; }
+
+  /* entrances: stagger position is set per element with style="--i: n" */
+  .anim-rise {
+    animation: rise var(--dur-slow) var(--ease) backwards;
+    animation-delay: calc(var(--i, 0) * var(--stagger));
+  }
+  .anim-word {
+    display: inline-block;
+    animation: rise-word var(--dur-slow) var(--ease) backwards;
+    animation-delay: calc(var(--i, 0) * var(--stagger));
+  }
+  .anim-pop { animation: pop var(--dur-base) var(--ease) backwards; }
+
+  .anim-check path {
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+    animation: draw var(--dur-slow) var(--dur-fast) var(--ease) forwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

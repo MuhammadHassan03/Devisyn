@@ -1,0 +1,13 @@
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+
+.intro {
+  max-width: 26em;
+  color: var(--text-body);
+}

@@ -1,0 +1,24 @@
+.toggle {
+  display: inline-flex;
+  padding: var(--space-1);
+  border: var(--border);
+  border-radius: var(--r-pill);
+  background: var(--white);
+}
+
+.option {
+  padding: var(--space-3) var(--space-4);
+  border: 0;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.active {
+  background: var(--ink);
+  color: var(--cream);
+}

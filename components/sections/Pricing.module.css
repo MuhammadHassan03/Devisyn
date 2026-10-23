@@ -1,0 +1,80 @@
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.cell {
+  display: flex;
+  flex: 1 1 300px;
+  min-width: 0;
+}
+
+.card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.featured {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -16px;
+  right: 24px;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-figure);
+  letter-spacing: var(--ls-display);
+}
+
+.per { color: var(--text-muted); }
+.perDark { opacity: 0.7; }
+
+.billing {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  color: var(--text-strong);
+}
+
+.billingDark { color: var(--mint); }
+
+.blurb { color: var(--text-strong); }
+.blurbDark { opacity: 0.85; }
+
+.features {
+  font-size: var(--fs-small);
+}
+
+.cta {
+  margin-top: auto;
+}
+
+.footnote {
+  margin-top: var(--space-4);
+  font-size: var(--fs-small);
+  text-align: center;
+  color: var(--text-faint);
+}
