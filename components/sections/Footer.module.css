@@ -20,6 +20,12 @@
   border-bottom: 1.5px solid var(--ink-line);
 }
 
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
 .cta {
   max-width: 14em;
   font-family: var(--font-display);

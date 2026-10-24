@@ -10,20 +10,22 @@ interface Props {
   size?: Size;
   block?: boolean;
   href?: string;
+  target?: string;
+  rel?: string;
   className?: string;
   children: ReactNode;
 }
 
 type ButtonProps = Props & Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof Props>;
 
-export function Button({ variant = "primary", size = "md", block, href, className, children, ...rest }: ButtonProps) {
+export function Button({ variant = "primary", size = "md", block, href, target, rel, className, children, ...rest }: ButtonProps) {
   const classes = cx(styles.button, styles[variant], styles[size], block && styles.block, className);
 
   const magnetic = variant === "primary" && size !== "md" ? { "data-magnetic": "" } : {};
 
   if (href) {
     return (
-      <a className={classes} href={href} {...(rest as object)} {...magnetic}>
+      <a className={classes} href={href} target={target} rel={rel} {...(rest as object)} {...magnetic}>
         {children}
       </a>
     );

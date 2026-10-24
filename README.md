@@ -52,6 +52,17 @@ Switching to your own domain later: add the domain in Resend, add the DNS record
 
 If GA4 is installed on the page (`window.gtag`), a successful submission fires the `generate_lead` event with the business type and UTM tags. Nothing happens if GA is not there.
 
+### Site URL and booking link
+
+| Name | What it does |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | The public URL. Canonical tags, sitemap, robots, Open Graph, JSON-LD and `llms.txt` all read it, so moving to a new domain is this one variable (then redeploy). Defaults to `https://devisyn.vercel.app`. |
+| `NEXT_PUBLIC_BOOKING_URL` | Optional. When set, a "Book a 15-minute call" button appears next to the free check (hero, contact, footer, demo summary). Unset, the button is hidden. |
+
+### Founder section
+
+Add the photo as `public/brand/founder.jpg` (about 480 x 560, portrait). Until then the section shows initials. Set `founder.linkedin` in `content/site.ts` to show the LinkedIn link; empty hides it.
+
 ### What is captured per lead
 
 Name, business, type, email, phone (optional), page URL, referrer, `utm_source` / `utm_medium` / `utm_campaign` (remembered from the landing URL for the visit), user agent, and a timestamp in America/Chicago.
@@ -70,7 +81,7 @@ Client components (`"use client"`) are only the rotating word, hero call feed, s
 
 1. Push the repo to GitHub and import it at vercel.com/new (framework is detected automatically).
 2. Add the three env vars above under Project Settings, Environment Variables.
-3. Deploy. If the domain is not `devisyn.vercel.app`, change `SITE_URL` in `content/site.ts`.
+3. Deploy. If the domain is not `devisyn.vercel.app`, set `NEXT_PUBLIC_SITE_URL` (see below).
 4. After deploy: test the form, run the Rich Results Test, submit `/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
 ## Checks

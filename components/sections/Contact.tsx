@@ -1,4 +1,5 @@
 import { site } from "@/content/site";
+import { BookCallButton } from "@/components/ui/BookCallButton";
 import { CheckList } from "@/components/ui/CheckList";
 import { SectionHeading } from "@/components/ui/Section";
 import { Parallax } from "@/components/ui/Parallax";
@@ -27,6 +28,7 @@ export function Contact() {
           />
           <p className={styles.body}>{contact.body}</p>
           <CheckList className={styles.checks} items={[...contact.checks]} />
+          <BookCallButton className={styles.book} />
         </div>
 
         <div className={styles.formWrap}>

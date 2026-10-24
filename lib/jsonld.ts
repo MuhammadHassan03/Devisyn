@@ -5,7 +5,7 @@ const BUSINESS_ID = `${SITE_URL}/#service-provider`;
 
 /** Structured data for the single page, built from content/site.ts so it never drifts from the visible copy. */
 export function buildJsonLd() {
-  const { name, seo, services, industries, pricing, faq, contact } = site;
+  const { name, seo, services, industries, pricing, faq, contact, founder } = site;
 
   return {
     "@context": "https://schema.org",
@@ -17,6 +17,12 @@ export function buildJsonLd() {
         url: SITE_URL,
         email: contact.email,
         sameAs: [contact.linkedin, contact.instagram],
+        founder: {
+          "@type": "Person",
+          name: founder.name,
+          jobTitle: founder.role,
+          ...(founder.linkedin ? { sameAs: [founder.linkedin] } : {}),
+        },
         logo: `${SITE_URL}/icon-512.png`,
         image: `${SITE_URL}/opengraph-image.png`,
         description: seo.description,

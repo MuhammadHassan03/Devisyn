@@ -1,4 +1,8 @@
-export const SITE_URL = "https://devisyn.vercel.app";
+/** The one place the public URL is read. Set NEXT_PUBLIC_SITE_URL (for example https://devisyn.com) to switch domains. */
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://devisyn.vercel.app").replace(/\/+$/, "");
+
+/** Optional booking link (Cal.com etc). The "Book a 15-minute call" button only shows when this is set. */
+export const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || "";
 
 export type Tone = "mint" | "peach" | "lilac";
 
@@ -85,7 +89,7 @@ export const site = {
       { label: "Pricing", href: "#pricing" },
       { label: "FAQ", href: "#faq" },
     ],
-    cta: { label: "Free call check", href: "#contact" },
+    cta: { label: "Free missed-call check", href: "#contact" },
     menuOpen: "Open menu",
     menuClose: "Close menu",
   },
@@ -97,6 +101,7 @@ export const site = {
     headlineEnd: "again.",
     body: "We answer the calls you miss, reply to new leads in under a minute, and book them straight into your calendar. Then we remind them, get you the review, and bring them back. You keep your number. You don't learn anything new.",
     primaryCta: { label: "Get my free missed-call check →", href: "#contact" },
+    bookCall: "Book a 15-minute call",
     secondaryCta: { label: "See what you get", href: "#services" },
     checks: ["Live in about a week", "Keep your number", "Cancel any time"],
     badgeText: "ANSWERED IN 2 RINGS • DAY OR NIGHT • ",
@@ -234,7 +239,7 @@ export const site = {
     items: [
       {
         id: "real-estate",
-        cta: "Get the real estate setup →",
+        cta: "Get my free missed-call check →",
         name: "Real estate",
         menuLabel: "Real estate",
         audience: "Real estate agents and teams",
@@ -248,7 +253,7 @@ export const site = {
       },
       {
         id: "dental-medical",
-        cta: "Get the dental & medical setup →",
+        cta: "Get my free missed-call check →",
         name: "Dental & medical",
         menuLabel: "Dental & medical",
         audience: "Dental and medical clinics",
@@ -262,7 +267,7 @@ export const site = {
       },
       {
         id: "med-spas-salons",
-        cta: "Get the med spa & salon setup →",
+        cta: "Get my free missed-call check →",
         name: "Med spas & salons",
         menuLabel: "Med spas & salons",
         audience: "Med spas and salons",
@@ -276,7 +281,7 @@ export const site = {
       },
       {
         id: "home-services",
-        cta: "Get the home services setup →",
+        cta: "Get my free missed-call check →",
         name: "Home services",
         menuLabel: "Home services",
         audience: "Home service companies (HVAC, plumbing, roofing)",
@@ -290,7 +295,7 @@ export const site = {
       },
       {
         id: "auto-repair",
-        cta: "Get the auto repair setup →",
+        cta: "Get my free missed-call check →",
         name: "Auto repair",
         menuLabel: "Auto repair",
         audience: "Auto repair shops",
@@ -304,7 +309,7 @@ export const site = {
       },
       {
         id: "law-firms",
-        cta: "Get the law firm setup →",
+        cta: "Get my free missed-call check →",
         name: "Law firms",
         menuLabel: "Law firms",
         audience: "Law firms",
@@ -383,6 +388,30 @@ export const site = {
         cta: "Talk to us",
       },
     ] as Plan[],
+  },
+
+  founder: {
+    id: "founder",
+    eyebrow: "The person doing the work",
+    headlineStart: "Who's behind",
+    accent: "Devisyn.",
+    name: "Muhammad Hassan",
+    role: "Founder",
+    photoAlt: "Muhammad Hassan, founder of Devisyn",
+    paragraphs: [
+      "I'm Muhammad Hassan, a full-stack and automation engineer. I build and run every Devisyn setup myself, so the person you talk to is the person doing the work.",
+      "I'm based in Pakistan and work remotely with US businesses.",
+      "Devisyn is new and we're taking 5 founding clients. There are no case studies or testimonials here yet, and I won't make any up. The free missed-call check is the proof: it shows you exactly what your own callers and leads experience today.",
+    ],
+    facts: [
+      { label: "Role", value: "Founder" },
+      { label: "Background", value: "Full-stack and automation engineer" },
+      { label: "Based in", value: "Pakistan" },
+      { label: "Works with", value: "US businesses, remotely" },
+    ],
+    /** Personal LinkedIn profile. Leave empty and the link is hidden. */
+    linkedin: "",
+    linkedinLabel: "Muhammad on LinkedIn",
   },
 
   faq: {
@@ -466,7 +495,7 @@ export const site = {
     timelineTitle: "What happens, step by step",
     timelineEmpty: "The timeline fills in as the demo runs.",
     summary: { booked: "Booked", rebooked: "Rebooked", reply: "Time to reply", staff: "Staff time", staffValue: "0 min" },
-    cta: { label: "Get this for my business", href: "#contact" },
+    cta: { label: "Get my free missed-call check", href: "#contact" },
   },
 
   calculator: {
@@ -500,12 +529,12 @@ export const site = {
       "auto-repair": 350,
       "law-firms": 1500,
     } as Record<string, number>,
-    cta: { label: "Stop the leak: get my free check →", href: "#contact" },
+    cta: { label: "Get my free missed-call check →", href: "#contact" },
   },
 
   footer: {
     ctaTitle: "Ready to stop losing customers?",
-    cta: { label: "Get my free check", href: "#contact" },
+    cta: { label: "Get my free missed-call check", href: "#contact" },
     tagline: "More booked customers from the calls and leads you already get.",
     columns: {
       services: "Services",
@@ -540,6 +569,14 @@ export const site = {
           body: [
             "If you use the contact form on this site we collect what you type into it: your name, business name, type of business, email address and, if you choose to give it, your business phone number.",
             "Like most websites, our hosting provider records basic technical data when you visit, such as IP address, browser type and the pages requested. We also use privacy-friendly analytics that count visits (pages viewed, country, device type) without cookies and without identifying you personally.",
+          ],
+        },
+        {
+          heading: "How we find and contact businesses",
+          body: [
+            "We contact businesses using contact details they publish themselves, such as the email address or phone number on their own website or business listing.",
+            "We do it to offer a free check that is relevant to their business: how quickly their calls and web leads get answered, and where customers could be slipping away.",
+            "To opt out, reply \"no thanks\" to any message or email devisynstudio@gmail.com. We honor every opt-out permanently. We keep the address or number on a do-not-contact list, only so we never contact it again, and we delete everything else we hold about you if you ask.",
           ],
         },
         {

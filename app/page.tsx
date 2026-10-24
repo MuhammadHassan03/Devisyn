@@ -2,6 +2,7 @@ import { Calculator } from "@/components/sections/Calculator";
 import { Comparison } from "@/components/sections/Comparison";
 import { Contact } from "@/components/sections/Contact";
 import { Faq } from "@/components/sections/Faq";
+import { Founder } from "@/components/sections/Founder";
 import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
@@ -29,6 +30,7 @@ export default function HomePage() {
         <Journey />
         <Comparison />
         <Pricing />
+        <Founder />
         <Faq />
         <Calculator />
         <Contact />

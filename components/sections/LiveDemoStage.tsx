@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { buildDemoScript, site, type ScenarioId } from "@/content/site";
+import { BookCallButton } from "@/components/ui/BookCallButton";
 import { Button } from "@/components/ui/Button";
 import { ChipGroup } from "@/components/ui/ChipGroup";
 import { Reveal } from "@/components/ui/Reveal";
@@ -101,9 +102,12 @@ export function LiveDemoStage() {
                   <b>{demo.summary.staff}:</b> {demo.summary.staffValue}
                 </span>
               </p>
-              <Button href={demo.cta.href} variant="light" size="lg">
-                {demo.cta.label}
-              </Button>
+              <div className={styles.summaryActions}>
+                <Button href={demo.cta.href} variant="light" size="lg">
+                  {demo.cta.label}
+                </Button>
+                <BookCallButton />
+              </div>
             </div>
           )}
         </div>

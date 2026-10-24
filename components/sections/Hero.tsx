@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { site } from "@/content/site";
 import { seq } from "@/lib/motion";
+import { BookCallButton } from "@/components/ui/BookCallButton";
 import { Button } from "@/components/ui/Button";
 import { CheckList } from "@/components/ui/CheckList";
 import { Parallax } from "@/components/ui/Parallax";
@@ -61,6 +62,7 @@ export function Hero() {
           <Button href={hero.primaryCta.href} size="lg">
             {hero.primaryCta.label}
           </Button>
+          <BookCallButton />
           <Button href={hero.secondaryCta.href} size="lg" variant="secondary">
             {hero.secondaryCta.label}
           </Button>

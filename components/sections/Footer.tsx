@@ -1,4 +1,5 @@
 import { site } from "@/content/site";
+import { BookCallButton } from "@/components/ui/BookCallButton";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CopyEmail } from "./CopyEmail";
@@ -18,9 +19,12 @@ export function Footer({ basePath = "" }: Props) {
       <div className={styles.inner}>
         <div className={styles.top}>
           <h2 className={styles.cta}>{footer.ctaTitle}</h2>
-          <Button href={href(footer.cta.href)} variant="light" size="lg">
-            {footer.cta.label}
-          </Button>
+          <div className={styles.actions}>
+            <Button href={href(footer.cta.href)} variant="light" size="lg">
+              {footer.cta.label}
+            </Button>
+            <BookCallButton />
+          </div>
         </div>
 
         <div className={styles.columns}>

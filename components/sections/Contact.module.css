@@ -50,3 +50,7 @@
   background: var(--cream);
   color: var(--ink);
 }
+
+.book {
+  margin-top: var(--space-6);
+}
